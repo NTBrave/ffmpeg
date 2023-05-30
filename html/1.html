@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视频播放测试</title>
+	<!--引入video-js.css-->
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+</head>
+<body>
+  <!--视频播放标签-->
+  <video id="example-video" width="800" height="600" 
+  class="video-js vjs-default-skin vjs-big-play-centered"
+    controls poster="">
+  	<source src="./out/index.m3u8" 
+  	type="application/x-mpegURL">
+  </video>	
+  <!--按钮-->
+  <input type="button" onClick="switchvideo()" value="switch"/>
+  <!--引入video.js文件-->
+  <script src="https://vjs.zencdn.net/7.17.0/video.js"></script>
+  <!--引入插件-->
+  <script src="https://vjs.zencdn.net/7.17.0/videojs-contrib-hls.js"></script>
+  <script>
+  	 //获取player对象
+  	 var player = videojs('example-video');
+  	 function switchvideo(){
+  	 	player.src({
+  	 		src: "./out/index.m3u8",
+  	 		type: "application/x-mpegURL",
+  	 		withCredentials: true
+  	 	});	
+  	 	player.play();
+  	 }
+  </script>
+</body>
+</html>
